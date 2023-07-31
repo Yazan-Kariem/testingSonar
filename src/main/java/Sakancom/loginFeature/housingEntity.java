@@ -82,7 +82,7 @@ String wid="' where id='";
                 } catch (Exception ex) {
 
                 }
-                if (flag1 == 1 && id.isEmpty() == false) {
+                if (flag1 == 1) {
 
                     try (Connection connection = DriverManager.getConnection(url, username, password)) {
 
