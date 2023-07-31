@@ -1,4 +1,4 @@
-package Sakancom.loginFeature;
+package sakancom.loginFeature;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -8,19 +8,19 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class housingFeature {
-    housingEntity obj=new housingEntity();
-boolean appear=false;
+    HousingEntity obj=new HousingEntity();
+
 
   
     @Given("the tenant choose {string} to view the available housing")
-    public void the_tenant_choose_to_view_the_available_housing(String string) {
+    public void theTenantChooseToViewTheAvailableHousing(String string) {
      
       
            assertTrue(string.equals("1"));
        
     }
     @Then("the Available housing appear")
-    public void the_available_housing_appear() {
+    public void theAvailableHousingAppear() {
         int counter=obj.showAvailable();
             
                 assertTrue(counter>1);
