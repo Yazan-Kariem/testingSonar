@@ -1,4 +1,4 @@
-package Sakancom.loginFeature;
+package sakancom.loginFeature;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -7,7 +7,7 @@ import io.cucumber.java.en.Then;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class controlPanelFeature {
+public class ControlPanelFeature {
 
     ControlPanel obj=new ControlPanel();
 
@@ -18,7 +18,7 @@ public class controlPanelFeature {
 
     }
     @Given("the tenant has house booked before username is {string}")
-    public void the_tenant_has_house_booked_before_username_is(String string) {
+    public void theTenantHasHouseBookedBeforeUsernameIs(String string) {
 
     assertTrue(obj.isBooked(string));
 
