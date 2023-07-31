@@ -6,17 +6,17 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class ControlPanel {
-
-    public boolean isBooked(String userName){
-
-
-        String host = "localhost";
+ String host = "localhost";
         int port = 3306;
         String database = "Sakancom";
         String username = "root";
         String password = "password";
         String url = "jdbc:mysql://" + host + ":" + port + "/" + database;
 
+    public boolean isBooked(String userName){
+
+
+       
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
 
             Statement statement = connection.createStatement();
@@ -43,13 +43,7 @@ public class ControlPanel {
 
         if(isBooked(userName)){
 
-               String host = "localhost";
-                int port = 3306;
-                String database = "Sakancom";
-                String username = "root";
-                String password = "password";
-                String url = "jdbc:mysql://" + host + ":" + port + "/" + database;
-
+              
                 try (Connection connection = DriverManager.getConnection(url, username, password)) {
 
                     Statement statement = connection.createStatement();
@@ -81,13 +75,7 @@ public class ControlPanel {
 
     public boolean displayOwnerInfo(String userName){
         String ownerName=new String(getOwnerName(userName));
-        String host = "localhost";
-        int port = 3306;
-        String database = "Sakancom";
-        String username = "root";
-        String password = "password";
-        String url = "jdbc:mysql://" + host + ":" + port + "/" + database;
-
+       
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
 
             Statement statement = connection.createStatement();
@@ -115,13 +103,7 @@ public class ControlPanel {
 
     public String getOwnerName(String userName){
 
-        String host = "localhost";
-        int port = 3306;
-        String database = "Sakancom";
-        String username = "root";
-        String password = "password";
-        String url = "jdbc:mysql://" + host + ":" + port + "/" + database;
-
+       
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
 
             Statement statement = connection.createStatement();
@@ -142,13 +124,7 @@ public class ControlPanel {
 
         public String getHouseID(String userName){
 
-            String host = "localhost";
-            int port = 3306;
-            String database = "Sakancom";
-            String username = "root";
-            String password = "password";
-            String url = "jdbc:mysql://" + host + ":" + port + "/" + database;
-
+           
             try (Connection connection = DriverManager.getConnection(url, username, password)) {
 
                 Statement statement = connection.createStatement();
@@ -168,13 +144,7 @@ return "null";
         }
         public boolean displayRent(String userName){
         String id=new String(getHouseID(userName));
-            String host = "localhost";
-            int port = 3306;
-            String database = "Sakancom";
-            String username = "root";
-            String password = "password";
-            String url = "jdbc:mysql://" + host + ":" + port + "/" + database;
-
+        
             try (Connection connection = DriverManager.getConnection(url, username, password)) {
 
                 Statement statement = connection.createStatement();
