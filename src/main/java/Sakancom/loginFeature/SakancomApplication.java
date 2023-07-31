@@ -14,10 +14,10 @@ logger.info(line);
             logger.info("2-Signup");
             logger.info("The Value : ");
             Scanner input = new Scanner(System.in);
-            int LoginOrSignUp = 0;
-            LoginOrSignUp = input.nextInt();
+            int loginOrSignUp = 0;
+            loginOrSignUp = input.nextInt();
             logger.info(line);
-            if (LoginOrSignUp == 1) {
+            if (loginOrSignUp == 1) {
                 logger.info("\n******* Login Page *******\n");
                 loginEntity in=new loginEntity();
 
@@ -48,9 +48,9 @@ while(true){
        if(avb>1){
            logger.info("do you want to book  accommodation? (Yes or No)");
         Scanner inp=new Scanner(System.in);
-        String YN=new String();
-        YN=inp.nextLine();
-        if(YN.equals("Yes")){
+
+       String yn=inp.nextLine();
+        if(yn.equals("Yes")){
             logger.info("Enter house ID : ");
             Scanner id = new Scanner(System.in);
             String ID = id.nextLine();
@@ -127,7 +127,7 @@ else if (choose==5) {
                 logger.info(line);
             }
 
-            else if (LoginOrSignUp==2) {
+            else if (loginOrSignUp==2) {
 
             }
         }
