@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.logging.Logger;
 
 public class Furniture {
 
@@ -13,7 +14,7 @@ String price;
 String  id;
 String selled;
 String queryS="Select * from forniture where username_tenant='";
-
+    private static final Logger logger = Logger.getLogger(Furniture.class.getName());
     String host = "localhost";
     int port = 3306;
     String database = "Sakancom";
@@ -52,12 +53,12 @@ if(checkAvailability(userName)){
         ResultSet resultSet = statement.executeQuery(query);
 
         while (resultSet.next()) {
-            System.err.println(counter+"-");
-            System.err.println("ID : "+resultSet.getString(5));
-            System.err.println("Picture : "+resultSet.getString(2));
-            System.err.println("residence_location_desc : "+resultSet.getString(3));
-            System.err.println("Price : "+resultSet.getString(4));
-            System.err.println("_____________________________________________");
+            logger.info(counter+"-");
+            logger.info("ID : "+resultSet.getString(5));
+            logger.info("Picture : "+resultSet.getString(2));
+            logger.info("residence_location_desc : "+resultSet.getString(3));
+            logger.info("Price : "+resultSet.getString(4));
+            logger.info("_____________________________________________");
             counter++;
         }
         if(counter>1){
