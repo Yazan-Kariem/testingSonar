@@ -12,7 +12,7 @@ public class ControlPanelFeature {
     ControlPanel obj=new ControlPanel();
 
     @Given("tenant choosed {string} to view control panel")
-    public void tenant_choosed_to_view_control_panel_username_is(String string) {
+    public void tenantChoosedToViewControlPanelUsernameIs(String string) {
 
            assertTrue(string.equals("3"));
 
@@ -26,7 +26,7 @@ public class ControlPanelFeature {
 
     }
     @Then("the control panel will appear for tenant username {string}")
-    public void the_control_panel_will_appear(String string) {
+    public void theControlPanelWillAppear(String string) {
       assertTrue(obj.displayControlPanel(string));
     }
 
