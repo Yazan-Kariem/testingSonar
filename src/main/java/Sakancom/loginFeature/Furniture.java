@@ -52,12 +52,12 @@ if(checkAvailability(userName)){
         ResultSet resultSet = statement.executeQuery(query);
 
         while (resultSet.next()) {
-            System.out.println(counter+"-");
-            System.out.println("ID : "+resultSet.getString(5));
-            System.out.println("Picture : "+resultSet.getString(2));
-            System.out.println("residence_location_desc : "+resultSet.getString(3));
-            System.out.println("Price : "+resultSet.getString(4));
-            System.out.println("_____________________________________________");
+            System.err.println(counter+"-");
+            System.err.println("ID : "+resultSet.getString(5));
+            System.err.println("Picture : "+resultSet.getString(2));
+            System.err.println("residence_location_desc : "+resultSet.getString(3));
+            System.err.println("Price : "+resultSet.getString(4));
+            System.err.println("_____________________________________________");
             counter++;
         }
         if(counter>1){
@@ -91,7 +91,7 @@ public boolean  addFurniture(String userName,String picture,String description,S
 }
 
 public boolean sellFurniture(String id,String userName){
-    if(checkAvailability(id,userName)) {
+    if(checkAvailability(userName,id)) {
 
 
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
