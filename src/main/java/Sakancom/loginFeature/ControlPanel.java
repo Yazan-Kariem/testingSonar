@@ -20,8 +20,8 @@ public class ControlPanel {
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
 
             Statement statement = connection.createStatement();
-            String query = new String();
-            query = "Select * from booking where tenantUserName='"+userName+"'" ;
+         
+           String query = "Select * from booking where tenantUserName='"+userName+"'" ;
             ResultSet res = statement.executeQuery(query);
             while (res.next()){
                 return true;
