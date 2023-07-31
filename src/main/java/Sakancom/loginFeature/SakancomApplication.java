@@ -1,4 +1,4 @@
-package Sakancom.loginFeature;
+package sakancom.loginFeature;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -52,9 +52,9 @@ while(true){
        String yn=inp.nextLine();
         if(yn.equals("Yes")){
             logger.info("Enter house ID : ");
-            Scanner id = new Scanner(System.in);
-            String ID = id.nextLine();
-            e.booking(ID,in.UserName);
+            Scanner ids = new Scanner(System.in);
+            String id = ids.nextLine();
+            e.booking(id,in.UserName);
 
         }}
     }
