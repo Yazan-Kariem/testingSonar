@@ -21,7 +21,7 @@ String selled;
     String url = "jdbc:mysql://" + host + ":" + port + "/" + database;
 public boolean checkAvailability(String userName){
 
-    int counter = 1;
+
     try (Connection connection = DriverManager.getConnection(url, username, password)) {
         System.out.println("Connected to the MySQL database!");
         Statement statement = connection.createStatement();
