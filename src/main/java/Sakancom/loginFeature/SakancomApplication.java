@@ -12,7 +12,7 @@ logger.info(line);
             logger.info("Choose from the following ");
             logger.info("1-Login");
             logger.info("2-Signup");
-            System.out.print("The Value : ");
+            logger.info("The Value : ");
             Scanner input = new Scanner(System.in);
             int LoginOrSignUp = 0;
             LoginOrSignUp = input.nextInt();
@@ -22,9 +22,9 @@ logger.info(line);
                 loginEntity in=new loginEntity();
 
                 Scanner input1 = new Scanner(System.in);
-                System.out.print("Enter User Name : ");
+                logger.info("Enter User Name : ");
                 in.UserName = input1.nextLine();
-                System.out.print("Enter the Password : ");
+                logger.info("Enter the Password : ");
                 in.Password = input1.nextLine();
                 String role= in.checkValues(in.UserName,in.Password);
 
