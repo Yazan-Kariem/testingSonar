@@ -14,7 +14,7 @@ public class LoginEntity {
     String username = "root";
     String password1 = "password";
     String url = "jdbc:mysql://" + host + ":" + port + "/" + database;
-
+String tenant1="tenant";
 
     String userName;
             String password;
@@ -35,8 +35,8 @@ public class LoginEntity {
                     //check if no data
 
                     flag = 1;
-                    if (resultSet.getString(3).equals("tenant")) {
-                        role ="tenant";
+                    if (resultSet.getString(3).equals(tenant1)) {
+                        role =tenant1;
 
                         return role;
                     } else if (resultSet.getString(3).equals("admin")) {
@@ -55,7 +55,7 @@ public class LoginEntity {
 
                 }
                 if (flag == 0) {
-                    role =new String("null");
+                    role ="null";
 
                     logger.info("Theres no user in the system has matching with information you inter create new account please");
                     return role;
@@ -112,7 +112,7 @@ public class LoginEntity {
 
     public boolean printTenant( String fFname, String mMname, String lLname, String pPhone, String tenemail, String age, String regNum, String major, String tenUser, String tenPass) {
         System.out.println("________________Signup as Tenant________________");
-        String tenant = "tenant";
+        String tenant = tenant1;
         System.out.println("Please enter your First name: "+fFname+"\n");
         System.out.println("Please enter your Middle name name: "+mMname+"\n");
         System.out.println("Please enter your Last name: "+lLname+"\n");
@@ -156,7 +156,7 @@ public class LoginEntity {
     }
     public boolean failureReg(String fFname, String mMname, String lLname, String pPhone, String tenmail, String age, String regNum, String major, String tenUser, String tenPass) {
         logger.info("________________Signup as Tenant________________");
-        String tenant = "tenant";
+
         logger.info("Please enter your First name: "+fFname+"\n");
         logger.info("Please enter your Middle name name: "+mMname+"\n");
         logger.info("Please enter your Last name: "+lLname+"\n");
