@@ -45,7 +45,5 @@ assertFalse(obj.isBooked(arg0));
      assertFalse(obj.displayControlPanel(arg0));
     }
 
-//    @Given("user choosed {string} to view control panel")
-//    public void userChoosedToViewControlPanel(String arg0) {
-//    }
+
 }
