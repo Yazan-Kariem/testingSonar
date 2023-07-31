@@ -1,4 +1,4 @@
-package Sakancom.loginFeature;
+package sakancom.loginFeature;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -7,7 +7,7 @@ import io.cucumber.java.en.Then;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class bookingFeature {
+public class bookingfeature {
     housingEntity obj=new housingEntity();
 
     @Given("tenant wants to booking and theres available housing id {string}")
