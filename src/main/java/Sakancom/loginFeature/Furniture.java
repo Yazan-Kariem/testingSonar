@@ -1,22 +1,20 @@
 package Sakancom.loginFeature;
 
-import io.cucumber.java.an.E;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class Furniture {
-String UserName,Picture,Description,Price,ID,selled;
-
-public boolean checkAvailability(String userName){
+String userName, picture, description, price, id,selled;
     String host = "localhost";
     int port = 3306;
     String database = "Sakancom";
     String username = "root";
     String password = "password";
     String url = "jdbc:mysql://" + host + ":" + port + "/" + database;
+public boolean checkAvailability(String userName){
+
     int counter = 1;
     try (Connection connection = DriverManager.getConnection(url, username, password)) {
         System.out.println("Connected to the MySQL database!");
@@ -39,12 +37,7 @@ return true;
 }
 public boolean displayFurniture(String userName){
 if(checkAvailability(userName)){
-    String host = "localhost";
-    int port = 3306;
-    String database = "Sakancom";
-    String username = "root";
-    String password = "password";
-    String url = "jdbc:mysql://" + host + ":" + port + "/" + database;
+
     int counter = 1;
     try (Connection connection = DriverManager.getConnection(url, username, password)) {
         System.out.println("Connected to the MySQL database!");
@@ -76,12 +69,7 @@ if(checkAvailability(userName)){
 }
 public boolean  addFurniture(String userName,String picture,String description,String price,String id,String selled) {
     String query = "insert into forniture (id,picture,residence_location_desc,price,username_tenant,selled) value ('" + id + "','" + picture + "','" + description + "','" + price + "','" + userName + "','" + selled + "')";
-    String host = "localhost";
-    int port = 3306;
-    String database = "Sakancom";
-    String username = "root";
-    String password = "password";
-    String url = "jdbc:mysql://" + host + ":" + port + "/" + database;
+
     int counter = 1;
     try (Connection connection = DriverManager.getConnection(url, username, password)) {
         System.out.println("Connected to the MySQL database!");
@@ -100,12 +88,7 @@ public boolean  addFurniture(String userName,String picture,String description,S
 
 public boolean sellFurniture(String id,String userName){
     if(checkAvailability(id,userName)) {
-        String host = "localhost";
-        int port = 3306;
-        String database = "Sakancom";
-        String username = "root";
-        String password = "password";
-        String url = "jdbc:mysql://" + host + ":" + port + "/" + database;
+
 
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             System.out.println("Connected to the MySQL database!");
@@ -124,12 +107,7 @@ return true;
 }
 
     public boolean checkAvailability(String userName,String id){
-        String host = "localhost";
-        int port = 3306;
-        String database = "Sakancom";
-        String username = "root";
-        String password = "password";
-        String url = "jdbc:mysql://" + host + ":" + port + "/" + database;
+ 
         int counter = 1;
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             System.out.println("Connected to the MySQL database!");
