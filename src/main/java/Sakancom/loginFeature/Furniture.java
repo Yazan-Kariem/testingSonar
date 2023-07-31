@@ -12,6 +12,7 @@ String  description;
 String price;
 String  id;
 String selled;
+String queryS="Select * from forniture where username_tenant='";
 
     String host = "localhost";
     int port = 3306;
@@ -25,7 +26,7 @@ public boolean checkAvailability(String userName){
     try (Connection connection = DriverManager.getConnection(url, username, password)) {
         Statement statement = connection.createStatement();
 
-        String query  = "Select * from forniture where username_tenant='"+userName+"' and Selled='No'";
+        String query  =queryS+userName+"' and Selled='No'";
         ResultSet resultSet = statement.executeQuery(query);
 
         while (resultSet.next()) {
@@ -47,7 +48,7 @@ if(checkAvailability(userName)){
     try (Connection connection = DriverManager.getConnection(url, username, password)) {
         Statement statement = connection.createStatement();
 
-        String query = "Select * from forniture where username_tenant='"+userName+"'";
+        String query = queryS+userName+"'";
         ResultSet resultSet = statement.executeQuery(query);
 
         while (resultSet.next()) {
@@ -114,8 +115,8 @@ return true;
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             Statement statement = connection.createStatement();
 
-           String query = "Select * from forniture where username_tenant='"+userName+"' and selled='No' and id='"+id+"'";
-   
+           String query = queryS+userName+"' and selled='No' and id='"+id+"'";
+
             ResultSet resultSet = statement.executeQuery(query);
 
             while (resultSet.next()) {
