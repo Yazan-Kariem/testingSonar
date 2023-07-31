@@ -6,7 +6,13 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class Furniture {
-String userName, picture, description, price, id,selled;
+String userName;
+String  picture;
+String  description;
+String price;
+String  id;
+String selled;
+
     String host = "localhost";
     int port = 3306;
     String database = "Sakancom";
@@ -107,7 +113,7 @@ return true;
 }
 
     public boolean checkAvailability(String userName,String id){
- 
+
         int counter = 1;
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             System.out.println("Connected to the MySQL database!");
