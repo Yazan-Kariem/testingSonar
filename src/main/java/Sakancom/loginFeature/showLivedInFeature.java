@@ -1,4 +1,4 @@
-package Sakancom.loginFeature;
+package sakancom.loginFeature;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -6,8 +6,8 @@ import io.cucumber.java.en.Then;
 
 import static org.junit.Assert.assertTrue;
 
-public class showLivedInFeature {
-    showLivedIn obj=new showLivedIn();
+public class ShowLivedInFeature {
+    ShowLivedIn obj=new ShowLivedIn();
     @Given("tenant pressed {string} to view peoples lived in houses")
     public void tenantPressedToViewPeoplesLivedInHouses(String arg0) {
 
