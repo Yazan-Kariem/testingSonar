@@ -12,7 +12,7 @@ public class ControlPanel {
         String username = "root";
         String password = "password";
         String url = "jdbc:mysql://" + host + ":" + port + "/" + database;
-
+ String queryS"Select * from booking where tenantUserName='";
     public boolean isBooked(String userName){
 
 
@@ -21,7 +21,7 @@ public class ControlPanel {
 
             Statement statement = connection.createStatement();
          
-           String query = "Select * from booking where tenantUserName='"+userName+"'" ;
+           String query = queryS+userName+"'" ;
             ResultSet res = statement.executeQuery(query);
             while (res.next()){
                 return true;
@@ -108,7 +108,7 @@ public class ControlPanel {
 
             Statement statement = connection.createStatement();
             String query = new String();
-            query = "Select * from booking where tenantUserName='" + userName + "'";
+            query = queryS + userName + "'";
             ResultSet res = statement.executeQuery(query);
             while (res.next()){
                 return res.getString(3);
@@ -129,7 +129,7 @@ public class ControlPanel {
 
                 Statement statement = connection.createStatement();
                 String query = new String();
-                query = "Select * from booking where tenantUserName='"+userName+"'" ;
+                query = queryS+userName+"'" ;
                 ResultSet res = statement.executeQuery(query);
                 while (res.next()){
                     return res.getString(1);
