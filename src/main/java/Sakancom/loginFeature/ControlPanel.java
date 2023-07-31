@@ -79,8 +79,8 @@ public class ControlPanel {
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
 
             Statement statement = connection.createStatement();
-            String query = new String();
-            query = "Select * from owner where username='" + ownerName + "'";
+            
+            String query = "Select * from owner where username='" + ownerName + "'";
             System.out.println(query);
             ResultSet re = statement.executeQuery(query);
             System.out.println(ownerName);
