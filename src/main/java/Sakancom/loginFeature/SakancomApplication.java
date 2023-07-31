@@ -1,23 +1,24 @@
 package Sakancom.loginFeature;
-import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class SakancomApplication{
-//ss
+
     public static void main(String[] args) {
+       Logger logger = Logger.getLogger(SakancomApplication.class.getName());
+        String line="_____________________________________________";
         while(true){
-            System.out.println("_____________________________________________");
-            System.out.println("Choose from the following ");
-            System.out.println("1-Login");
-            System.out.println("2-Signup");
+logger.info(line);
+            logger.info("Choose from the following ");
+            logger.info("1-Login");
+            logger.info("2-Signup");
             System.out.print("The Value : ");
             Scanner input = new Scanner(System.in);
             int LoginOrSignUp = 0;
             LoginOrSignUp = input.nextInt();
-            System.out.println("_____________________________________________");
-
+            logger.info(line);
             if (LoginOrSignUp == 1) {
-                System.out.println("\n******* Login Page *******\n");
+                logger.info("\n******* Login Page *******\n");
                 loginEntity in=new loginEntity();
 
                 Scanner input1 = new Scanner(System.in);
@@ -31,26 +32,26 @@ public class SakancomApplication{
                 if(role.equals("tenant")){
 while(true){
 
-    System.out.println("_____________________________________________");
-    System.out.println("Choose from the following");
-    System.out.println("1-View the available housing");
-    System.out.println("2-Furniture");
-    System.out.println("3-Control Panel");
-    System.out.println("4-ShowLivedIn");
-    System.out.println("5-Sign out");
+    logger.info(line);
+    logger.info("Choose from the following");
+    logger.info("1-View the available housing");
+    logger.info("2-Furniture");
+    logger.info("3-Control Panel");
+    logger.info("4-ShowLivedIn");
+    logger.info("5-Sign out");
     Scanner input2=new Scanner(System.in);
     int choose=input2.nextInt();
-    System.out.println("_____________________________________________");
+    logger.info(line);
     if(choose==1){
         housingEntity e=new housingEntity();
        int avb= e.showAvailable();
        if(avb>1){
-        System.out.println("do you want to book  accommodation? (Yes or No)");
+           logger.info("do you want to book  accommodation? (Yes or No)");
         Scanner inp=new Scanner(System.in);
         String YN=new String();
         YN=inp.nextLine();
         if(YN.equals("Yes")){
-            System.out.println("Enter house ID : ");
+            logger.info("Enter house ID : ");
             Scanner id = new Scanner(System.in);
             String ID = id.nextLine();
             e.booking(ID,in.UserName);
@@ -59,37 +60,37 @@ while(true){
     }
 if(choose==2) {
     while (true) {
-        System.out.println("_____________________________________________");
-        System.out.println("Choose from the following");
-        System.out.println("1-View the available Furnitures");
-        System.out.println("2-Add Furnitures");
-        System.out.println("3-Sell Furnitures");
-        System.out.println("4-Back");
+        logger.info(line);
+        logger.info("Choose from the following");
+        logger.info("1-View the available Furnitures");
+        logger.info("2-Add Furnitures");
+        logger.info("3-Sell Furnitures");
+        logger.info("4-Back");
         Scanner inp = new Scanner(System.in);
         int ch = inp.nextInt();
-        System.out.println("_____________________________________________");
+        logger.info(line);
         Furniture o = new Furniture();
         if (ch == 1) {
             o.displayFurniture(in.UserName);
 
         } else if (ch == 2) {
             Scanner inp1 = new Scanner(System.in);
-            System.out.println("Enter Picture : ");
-            o.Picture = inp1.nextLine();
-            System.out.println("Enter Description : ");
-            o.Description = inp1.nextLine();
-            System.out.println("Enter Price : ");
-            o.Price = inp1.nextLine();
-            System.out.println("Enter ID : ");
-            o.ID = inp1.nextLine();
+            logger.info("Enter Picture : ");
+            o.picture = inp1.nextLine();
+            logger.info("Enter Description : ");
+            o.description = inp1.nextLine();
+            logger.info("Enter Price : ");
+            o.price = inp1.nextLine();
+            logger.info("Enter ID : ");
+            o.id = inp1.nextLine();
             o.selled = "No";
-            o.addFurniture(in.UserName, o.Picture, o.Description, o.Price, o.ID, o.selled);
+            o.addFurniture(in.UserName, o.picture, o.description, o.price, o.id, o.selled);
 
         } else if (ch == 3) {
             Scanner inp1 = new Scanner(System.in);
-            System.out.println("Enter ID to sell: ");
-            o.ID = inp1.nextLine();
-            o.sellFurniture(o.ID, in.UserName);
+            logger.info("Enter ID to sell: ");
+            o.id = inp1.nextLine();
+            o.sellFurniture(o.id, in.UserName);
 
         }
 
@@ -104,7 +105,7 @@ ControlPanel e=new ControlPanel();
 e.displayControlPanel(in.UserName);
 }
 else if(choose==4){
-    System.out.println("Enter House id you want to show:");
+    logger.info("Enter House id you want to show:");
     Scanner in1=new Scanner(System.in);
     String id=in1.nextLine();
     showLivedIn e=new showLivedIn();
@@ -123,8 +124,7 @@ else if (choose==5) {
 
                 }
 
-                System.out.println("_____________________________________________");
-
+                logger.info(line);
             }
 
             else if (LoginOrSignUp==2) {
