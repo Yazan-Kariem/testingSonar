@@ -1,32 +1,34 @@
-package Sakancom.loginFeature;
+package sakancom.loginFeature;
 
 import java.sql.*;
-import static org.junit.Assert.*;
+import java.util.logging.Logger;
 
-public class loginEntity {
+public class LoginEntity {
 
-    boolean Owner = false;
+    boolean owner = false;
     boolean reg = false;
-    boolean Tenant = false;
-    boolean adminUsername, adminPassword,adminFlag;
+
     String host = "localhost";
     int port = 3306;
-    String database = "Sakancom";
+    String database = "sakancom";
     String username = "root";
-    String password = "password";
+    String password1 = "password";
     String url = "jdbc:mysql://" + host + ":" + port + "/" + database;
 
 
-    String UserName,Password,Role;
-    public  String checkValues(String UserName,String Password) {
+    String userName;
+            String password;
+                    String role;
+    Logger logger = Logger.getLogger(LoginEntity.class.getName());
+    public  String checkValues(String userName,String password) {
 
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+        try (Connection connection = DriverManager.getConnection(url, username, password1)) {
             Statement statement = connection.createStatement();
-            if (UserName.isEmpty() == true || Password.isEmpty() == true) {
-                System.out.println("Wrong input");
+            if (userName.isEmpty() == true || password.isEmpty() == true) {
+                logger.info("Wrong input");
             } else {
                 int flag = 0;
-                String query = "SELECT * FROM login where username='" + UserName + "'" + " and password='" + Password + "'";
+                String query = "SELECT * FROM login where username='" + userName + "'" + " and password='" + password + "'";
                 ResultSet resultSet = statement.executeQuery(query);
                 while (resultSet.next()) {
 
@@ -34,18 +36,18 @@ public class loginEntity {
 
                     flag = 1;
                     if (resultSet.getString(3).equals("tenant")) {
-                        Role=new String("tenant");
+                        role ="tenant";
 
-                        return Role;
+                        return role;
                     } else if (resultSet.getString(3).equals("admin")) {
-                        Role=new String("admin");
-                        return Role;
+                        role ="admin";
+                        return role;
                     } else if (resultSet.getString(3).equals("owner")) {
-                        Role=new String("owner");
-                        return Role;
+                        role ="owner";
+                        return role;
                     } else {
-                        Role=new String("null");
-                        return Role;
+                        role ="null";
+                        return role;
                     }
 
 
@@ -53,10 +55,10 @@ public class loginEntity {
 
                 }
                 if (flag == 0) {
-                    Role=new String("null");
+                    role =new String("null");
 
-                    System.out.println("Theres no user in the system has matching with information you inter create new account please");
-                    return Role;
+                    logger.info("Theres no user in the system has matching with information you inter create new account please");
+                    return role;
                 }
                 //sdads
             }
@@ -70,69 +72,67 @@ public class loginEntity {
 
 
 
-        return Role;
+        return role;
     }
 
 
-    public boolean printOwner(String Fname, String Mname, String Lname, String Phone, String Owemail, String age, String OwUser, String OwPass) {
-        System.out.println("_____________________________________________");
-        System.out.println("Choose from the following ");
-        System.out.println("1-Login");
-        System.out.println("2-Signup");
-        System.out.print("The Value : ");
-        System.out.println("_____________________________________________");
+    public boolean printOwner(String fname, String mname, String lname, String phone, String owemail, String age, String owUser, String owPass) {
+        logger.info("_____________________________________________");
+        logger.info("Choose from the following ");
+        logger.info("1-Login");
+        logger.info("2-Signup");
+        logger.info("The Value : ");
+        logger.info("_____________________________________________");
         String owner = "owner";
-        System.out.println("________________Signup as Owner________________");
-        System.out.println("Please enter your First name: " + Fname+ "\n");
-        System.out.println("Please enter your Middle name name: " + Mname + "\n");
-        System.out.println("Please enter your Last name: " + Lname + "\n");
-        System.out.println("Please enter your Phone number: " + Phone + "\n");
-        System.out.println("Please enter your Email: " + Owemail + "\n");
-        System.out.println("Please enter your age: " + age + "\n");
-        System.out.println("Please enter your username: " + OwUser + "\n");
-        System.out.println("Please enter your password: " + OwPass + "\n");
-        System.out.println("_____________________________________________");
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
-            System.out.println("Connected to the MySQL database!");
+        logger.info("________________Signup as Owner________________");
+        logger.info("Please enter your First name: " + fname+ "\n");
+        logger.info("Please enter your Middle name name: " + mname + "\n");
+        logger.info("Please enter your Last name: " + lname + "\n");
+        logger.info("Please enter your Phone number: " + phone + "\n");
+        logger.info("Please enter your Email: " + owemail + "\n");
+        logger.info("Please enter your age: " + age + "\n");
+        logger.info("Please enter your username: " + owUser + "\n");
+        logger.info("Please enter your password: " + owPass + "\n");
+        logger.info("_____________________________________________");
+        try (Connection connection = DriverManager.getConnection(url, username, password1)) {
             Statement statement2 = connection.createStatement();
-            String query2 = "insert into login (username, password, role) values ('"+OwUser+"', '"+OwPass+"', '"+owner+"')";
+            String query2 = "insert into login (username, password, role) values ('"+owUser+"', '"+owPass+"', '"+owner+"')";
             statement2.executeUpdate(query2);
             Statement statement3 = connection.createStatement();
-            String query3 = "insert into owner (first_name, second_name, last_name, phonenumber, email, age, username, password, role) values ('"+Fname+"', '"+Mname+"', '"+Lname+"', '"+Phone + "', '"+Owemail+"', '"+age+"', '"+OwUser+"', '"+OwPass+"', '"+owner+"')";
+            String query3 = "insert into owner (first_name, second_name, last_name, phonenumber, email, age, username, password, role) values ('"+fname+"', '"+mname+"', '"+lname+"', '"+phone + "', '"+owemail+"', '"+age+"', '"+owUser+"', '"+owPass+"', '"+owner+"')";
             statement3.executeUpdate(query3);
-            System.out.println("Creating Owner Account...");
-            System.out.println("_____________________________________________");
-            Owner = true;
+            logger.info("Creating Owner Account...");
+            logger.info("_____________________________________________");
+            this.owner = true;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return Owner;
+        return this.owner;
     }
 
-    public boolean printTenant( String FFname, String MMname, String LLname, String PPhone, String tenemail, String Age, String Reg_num, String major, String tenUser, String tenPass) {
+    public boolean printTenant( String fFname, String mMname, String lLname, String pPhone, String tenemail, String age, String regNum, String major, String tenUser, String tenPass) {
         System.out.println("________________Signup as Tenant________________");
         String tenant = "tenant";
-        System.out.println("Please enter your First name: "+FFname+"\n");
-        System.out.println("Please enter your Middle name name: "+MMname+"\n");
-        System.out.println("Please enter your Last name: "+LLname+"\n");
-        System.out.println("Please enter your Phone number: "+PPhone+"\n");
+        System.out.println("Please enter your First name: "+fFname+"\n");
+        System.out.println("Please enter your Middle name name: "+mMname+"\n");
+        System.out.println("Please enter your Last name: "+lLname+"\n");
+        System.out.println("Please enter your Phone number: "+pPhone+"\n");
         System.out.println("Please enter your Email: "+tenemail+"\n");
-        System.out.println("Please enter your age: "+Age+"\n");
-        System.out.println("Please enter your Registration number: "+Reg_num+"\n");
+        System.out.println("Please enter your age: "+age+"\n");
+        System.out.println("Please enter your Registration number: "+regNum+"\n");
         System.out.println("Please enter your major: "+major+"\n");
         System.out.println("Please enter your username: "+tenUser+"\n");
         System.out.println("Please enter your password: "+tenPass+"\n");
         System.out.println("_____________________________________________");
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
-            System.out.println("Connected to the MySQL database!");
+        try (Connection connection = DriverManager.getConnection(url, username, password1)) {
             Statement statement3 = connection.createStatement();
             String query3 = "insert into login (username, password, role) values ('"+tenUser+"','"+tenPass+"', '"+tenant+"')";
             statement3.executeUpdate(query3);
             Statement statement4 = connection.createStatement();
-            String query4 = "insert into tenant (first_name, second_name, last_name, phonenumber, email, age, reg_num, major, username, password, role) values ('" + FFname + "', '" + MMname + "', '" + LLname + "', '" + PPhone + "', '" + tenemail + "', '" + Age + "', '" + Reg_num + "', '" + major + "', '" + tenUser + "','" + tenPass + "', '" + tenant + "')";
+            String query4 = "insert into tenant (first_name, second_name, last_name, phonenumber, email, age, reg_num, major, username, password, role) values ('" + fFname + "', '" + mMname + "', '" + lLname + "', '" + pPhone + "', '" + tenemail + "', '" + age + "', '" + regNum + "', '" + major + "', '" + tenUser + "','" + tenPass + "', '" + tenant + "')";
             statement4.executeUpdate(query4);
-            System.out.println("Creating Tenant Account...");
-            System.out.println("_____________________________________________");
+            logger.info("Creating Tenant Account...");
+            logger.info("_____________________________________________");
           return true;
             }
         catch (SQLException e) {
@@ -144,32 +144,31 @@ public class loginEntity {
     }
     public void logout()
     {
-        System.out.println("_____________________________________________");
-        System.out.println("Choose from the following ");
-        System.out.println("7-logout");
-        System.out.print("The Value : ");
-        System.out.println("_____________________________________________");
-        System.out.println("\n******* information *******\n");
-        System.out.println("_____________________________________________");
-        System.out.println("___________Logged out Successfully___________");
-        System.out.println("_____________________________________________");
+        logger.info("_____________________________________________");
+        logger.info("Choose from the following ");
+        logger.info("7-logout");
+        logger.info("The Value : ");
+        logger.info("_____________________________________________");
+        logger.info("\n******* information *******\n");
+        logger.info("_____________________________________________");
+        logger.info("___________Logged out Successfully___________");
+        logger.info("_____________________________________________");
     }
-    public boolean failureReg(String FFname, String MMname, String LLname, String PPhone, String tenmail, String Age, String Reg_num, String major, String tenUser, String tenPass) {
-        System.out.println("________________Signup as Tenant________________");
+    public boolean failureReg(String fFname, String mMname, String lLname, String pPhone, String tenmail, String age, String regNum, String major, String tenUser, String tenPass) {
+        logger.info("________________Signup as Tenant________________");
         String tenant = "tenant";
-        System.out.println("Please enter your First name: "+FFname+"\n");
-        System.out.println("Please enter your Middle name name: "+MMname+"\n");
-        System.out.println("Please enter your Last name: "+LLname+"\n");
-        System.out.println("Please enter your Phone number: "+PPhone+"\n");
-        System.out.println("Please enter your Email: "+tenmail+"\n");
-        System.out.println("Please enter your age: "+Age+"\n");
-        System.out.println("Please enter your Registration number: "+Reg_num+"\n");
-        System.out.println("Please enter your major: "+major+"\n");
-        System.out.println("Please enter your username: "+tenUser+"\n");
-        System.out.println("Please enter your password: "+tenPass+"\n");
-        System.out.println("_____________________________________________");
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
-            System.out.println("Connected to the MySQL database!");
+        logger.info("Please enter your First name: "+fFname+"\n");
+        logger.info("Please enter your Middle name name: "+mMname+"\n");
+        logger.info("Please enter your Last name: "+lLname+"\n");
+        logger.info("Please enter your Phone number: "+pPhone+"\n");
+        logger.info("Please enter your Email: "+tenmail+"\n");
+        logger.info("Please enter your age: "+age+"\n");
+        logger.info("Please enter your Registration number: "+regNum+"\n");
+        logger.info("Please enter your major: "+major+"\n");
+        logger.info("Please enter your username: "+tenUser+"\n");
+        logger.info("Please enter your password: "+tenPass+"\n");
+        logger.info("_____________________________________________");
+        try (Connection connection = DriverManager.getConnection(url, username, password1)) {
             Statement statement = connection.createStatement();
             String query = "select * from login where username = '"+tenUser+"'and password = '"+tenPass+"'";
             ResultSet resultSet = statement.executeQuery(query);
