@@ -23,10 +23,9 @@ public boolean checkAvailability(String userName){
 
 
     try (Connection connection = DriverManager.getConnection(url, username, password)) {
-        System.out.println("Connected to the MySQL database!");
         Statement statement = connection.createStatement();
-        String query = new String();
-        query = "Select * from forniture where username_tenant='"+userName+"' and Selled='No'";
+
+        String query  = "Select * from forniture where username_tenant='"+userName+"' and Selled='No'";
         ResultSet resultSet = statement.executeQuery(query);
 
         while (resultSet.next()) {
@@ -46,10 +45,9 @@ if(checkAvailability(userName)){
 
     int counter = 1;
     try (Connection connection = DriverManager.getConnection(url, username, password)) {
-        System.out.println("Connected to the MySQL database!");
         Statement statement = connection.createStatement();
-        String query = new String();
-        query = "Select * from forniture where username_tenant='"+userName+"'";
+
+        String query = "Select * from forniture where username_tenant='"+userName+"'";
         ResultSet resultSet = statement.executeQuery(query);
 
         while (resultSet.next()) {
@@ -76,9 +74,8 @@ if(checkAvailability(userName)){
 public boolean  addFurniture(String userName,String picture,String description,String price,String id,String selled) {
     String query = "insert into forniture (id,picture,residence_location_desc,price,username_tenant,selled) value ('" + id + "','" + picture + "','" + description + "','" + price + "','" + userName + "','" + selled + "')";
 
-    int counter = 1;
+
     try (Connection connection = DriverManager.getConnection(url, username, password)) {
-        System.out.println("Connected to the MySQL database!");
         Statement statement = connection.createStatement();
         statement.executeUpdate(query);
         return true;
@@ -97,7 +94,6 @@ public boolean sellFurniture(String id,String userName){
 
 
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
-            System.out.println("Connected to the MySQL database!");
             Statement statement = connection.createStatement();
             String query = "update forniture set selled='Yes' where id='" + id + "'";
             statement.executeUpdate(query);
@@ -116,11 +112,10 @@ return true;
 
         int counter = 1;
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
-            System.out.println("Connected to the MySQL database!");
             Statement statement = connection.createStatement();
-            String query = new String();
-            query = "Select * from forniture where username_tenant='"+userName+"' and selled='No' and id='"+id+"'";
-            System.out.println(query);
+
+           String query = "Select * from forniture where username_tenant='"+userName+"' and selled='No' and id='"+id+"'";
+   
             ResultSet resultSet = statement.executeQuery(query);
 
             while (resultSet.next()) {
@@ -131,14 +126,14 @@ return true;
             if(counter>1){
                 return true;
             }
-            System.out.println("after while");
+
 
 
         }
         catch (Exception e){
 
         }
-        System.out.println("before false");
+
 
         return false;
 
