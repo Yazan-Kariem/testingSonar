@@ -1,4 +1,4 @@
-package Sakancom.loginFeature;
+package sakancom.loginFeature;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -10,14 +10,14 @@ import static org.junit.Assert.assertTrue;
 public class furnitureFeature {
 Furniture obj=new Furniture();
     @Given("tenant typed {int} to view his furnitures")
-    public void tenant_typed_to_view_his_furnitures(Integer int1) {
+    public void tenantTypedToViewHisFurnitures(Integer int1) {
 
             assertTrue(int1==1);
 
     }
     boolean avb=false;
     @Given("the tenant has available furnitures the tenant username is {string}")
-    public void the_tenant_has_available_furnitures(String string) {
+    public void theTenantHasAvailableFurnitures(String string) {
       boolean flag= obj.checkAvailability(string);
         assertTrue(flag);
       if(flag){
@@ -27,27 +27,27 @@ Furniture obj=new Furniture();
 
     }
     @Then("the program will appear the furnitures for username {string}")
-    public void the_program_will_appear_the_furnitures(String string) {
+    public void theProgramWillAppearTheFurnitures(String string) {
        assertTrue(obj.displayFurniture(string));
 
     }
 
     @Given("tenant typed {int} to show his furnitures")
-    public void tenant_typed_to_show_his_furnitures(Integer int1) {
+    public void tenantTypedToShowHisFurnitures(Integer int1) {
       assertTrue(int1==1);
     }
     boolean avb1=false;
     @Given("the tenant doesn't have available furnitures the tenant username is {string}")
-    public void the_tenant_doesn_t_have_available_furnitures(String string) {
+    public void theTenantDoesnTHaveAvailableFurnitures(String string) {
         boolean flag=obj.checkAvailability(string);
       assertFalse(flag);
     }
     @Then("the program will not appear the furnitures for username {string}")
-    public void the_program_will_not_appear_the_furnitures(String string) {
+    public void theProgramWillNotAppearTheFurnitures(String string) {
        assertFalse(obj.displayFurniture(string));
     }
     @Given("tenant typed {string} to choose add option to add furniture")
-    public void tenant_wants_to_add_furniture(String string) {
+    public void tenantWantsToAddFurniture(String string) {
      assertTrue(string.equals("2"));
     }
 
@@ -72,7 +72,7 @@ Furniture obj=new Furniture();
 
     @Then("the program will sell the furniture id {string} username is {string}")
     public void theProgramWillSellTheFurnitureId(String arg0,String arg1) {
-      assertTrue(obj.sellFurniture(arg1,arg0));
+      assertTrue(obj.sellFurniture(arg0,arg1));
     }
 
 
