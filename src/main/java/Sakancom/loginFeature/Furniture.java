@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class Furniture {
-String userName;
+
 String  picture;
 String  description;
 String price;
