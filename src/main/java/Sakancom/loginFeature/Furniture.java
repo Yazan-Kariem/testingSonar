@@ -53,9 +53,9 @@ if(checkAvailability(userName)){
         ResultSet resultSet = statement.executeQuery(query);
 
         while (resultSet.next()) {
-            String id="ID : "+resultSet.getString(5);
+            String idt="ID : "+resultSet.getString(5);
             logger.info(counter+"-");
-            logger.info(id);
+            logger.info(idt);
             logger.info("Picture : "+resultSet.getString(2));
             logger.info("residence_location_desc : "+resultSet.getString(3));
             logger.info("Price : "+resultSet.getString(4));
